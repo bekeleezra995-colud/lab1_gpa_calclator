@@ -1,8 +1,9 @@
-from Services.StudentService import students
-from Services.CourseService import courses
+from students.StudentService import students
+from courses.CoursesService import courses
 
 results = []  # {"student_id": "", "course_code": "", "grade": "", "gp": float}
 
+# DBU Grading System (Assumed based on provided code)
 grade_points = {
     "A+": 4.0,
     "A": 4.0,
@@ -19,23 +20,36 @@ grade_points = {
 
 def add_result():
     sid = input("Enter student ID: ")
+    
+    # Validate student
+    if not any(s["id"] == sid for s in students):
+        print("Student not found! Please register the student first.")
+        return
+
     code = input("Enter course code: ")
+    
+    # Validate course
+    if not any(c["code"] == code for c in courses):
+        print("Course not found! Please register the course first.")
+        return
+
     grade = input("Enter grade (A+, A, A-, B+, B, B-, C+, C, C-, D, F): ").upper()
 
-    # validate student, course, grade
-    if not any(s["id"] == sid for s in students):
-        print("Student not found!")
-        return
-    if not any(c["code"] == code for c in courses):
-        print("Course not found!")
-        return
     if grade not in grade_points:
         print("Invalid grade!")
         return
 
     gp = grade_points[grade]
-    results.append({"student_id": sid, "course_code": code, "grade": grade, "gp": gp})
+    
+    # Check if result already exists for this student and course
+    for r in results:
+        if r['student_id'] == sid and r['course_code'] == code:
+            print("Result for this course already exists. Updating...")
+            r['grade'] = grade
+            r['gp'] = gp
+            return
 
+    results.append({"student_id": sid, "course_code": code, "grade": grade, "gp": gp})
     print("Result added successfully!")
 
 def list_results():
@@ -43,8 +57,10 @@ def list_results():
         print("No results recorded!")
         return
     print("\n--- Results ---")
+    print(f"{'Student ID':<15} {'Course Code':<15} {'Grade':<10} {'GP':<5}")
+    print("-" * 50)
     for r in results:
-        print(f"Student: {r['student_id']} | Course: {r['course_code']} | Grade: {r['grade']}")
+        print(f"{r['student_id']:<15} {r['course_code']:<15} {r['grade']:<10} {r['gp']:<5}")
 
 def result_menu():
     while True:

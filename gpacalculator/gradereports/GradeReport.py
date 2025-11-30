@@ -2,10 +2,20 @@ from results.ResultService import results
 from courses.CoursesService import courses
 from students.StudentService import students
 
+def print_report_header():
+    print(r"""
+   ____ ____    _    
+  / ___|  _ \  / \   
+ | |  _| |_) |/ _ \  
+ | |_| |  __// ___ \ 
+  \____|_|  /_/   \_\
+    """)
+    print("=" * 60)
+
 def calculate_gpa(student_id):
     student_results = [r for r in results if r['student_id'] == student_id]
     if not student_results:
-        print("No results found for this student!")
+        print("\n[!] Error: No results found for this student!")
         return
 
     # get student name
@@ -16,8 +26,9 @@ def calculate_gpa(student_id):
     total_gp = 0
 
     print(f"\n--- Transcript for {name} ({student_id}) ---")
-    print(f"{'Course':<10} {'Credit':<10} {'Grade':<10} {'GP':<10}")
-    print("-" * 40)
+    print("=" * 60)
+    print(f"{'Course':<15} {'Credit':<15} {'Grade':<15} {'GP':<15}")
+    print("=" * 60)
 
     for r in student_results:
         course = next((c for c in courses if c["code"] == r["course_code"]), None)
@@ -30,29 +41,35 @@ def calculate_gpa(student_id):
         total_credit += credit
         total_gp += (gp * credit)
 
-        print(f"{r['course_code']:<10} {credit:<10} {r['grade']:<10} {gp:<10}")
+        print(f"{r['course_code']:<15} {credit:<15} {r['grade']:<15} {gp:<15}")
 
     if total_credit == 0:
         gpa = 0.0
     else:
         gpa = total_gp / total_credit
         
-    print("-" * 40)
-    print(f"Total Credit: {total_credit}")
+    print("=" * 60)
+    print(f"Total Credit:      {total_credit}")
     print(f"Total Grade Point: {round(total_gp, 2)}")
-    print(f"Cumulative GPA: {round(gpa, 2)}")
+    print(f"Cumulative GPA:    {round(gpa, 2)}")
+    print("=" * 60)
 
 def report_menu():
     while True:
-        print("\n--- GPA Report Menu ---")
-        print("1. Calculate GPA by Student ID")
-        print("2. Back")
+        print_report_header()
+        print("[1] Calculate GPA by Student ID")
+        print("[2] Back")
+        print("-" * 60)
         choice = input("Enter: ")
 
         if choice == "1":
-            sid = input("Enter Student ID: ")
+            while True:
+                sid = input("Enter Student ID: ").strip()
+                if sid:
+                    break
+                print("[!] Error: Student ID cannot be empty.")
             calculate_gpa(sid)
         elif choice == "2":
             break
         else:
-            print("Invalid choice!")
+            print("\n[!] Invalid choice!")

@@ -29,4 +29,9 @@ def main_menu():
             print("Invalid choice! Please try again.")
 
 if __name__ == "__main__":
-    main_menu()
+    try:
+        main_menu()
+    except KeyboardInterrupt:
+        print("\nProgram interrupted by user. Exiting...")
+    except Exception as e:
+        print(f"\nAn unexpected error occurred: {e}")

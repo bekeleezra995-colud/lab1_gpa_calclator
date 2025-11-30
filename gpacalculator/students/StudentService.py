@@ -1,8 +1,13 @@
-students = []   # list of dicts
+students = []   # list of dicts: {"id": "S001", "name": "Bekele"}
 
 def register_student():
     sid = input("Enter student ID: ")
     name = input("Enter student name: ")
+
+    # Check if ID already exists
+    if any(s['id'] == sid for s in students):
+        print("Student with this ID already exists!")
+        return
 
     students.append({"id": sid, "name": name})
     print("Student registered successfully!")
@@ -12,8 +17,10 @@ def list_students():
         print("No students registered yet!")
         return
     print("\n--- Registered Students ---")
+    print(f"{'ID':<10} {'Name':<20}")
+    print("-" * 30)
     for s in students:
-        print(f"ID: {s['id']} | Name: {s['name']}")
+        print(f"{s['id']:<10} {s['name']:<20}")
 
 def student_menu():
     while True:

@@ -19,25 +19,33 @@ grade_points = {
 }
 
 def add_result():
-    sid = input("Enter student ID: ")
+    while True:
+        sid = input("Enter student ID: ").strip()
+        if sid:
+            break
+        print("Error: Student ID cannot be empty.")
     
     # Validate student
     if not any(s["id"] == sid for s in students):
-        print("Student not found! Please register the student first.")
+        print("Error: Student not found! Please register the student first.")
         return
 
-    code = input("Enter course code: ")
+    while True:
+        code = input("Enter course code: ").strip()
+        if code:
+            break
+        print("Error: Course code cannot be empty.")
     
     # Validate course
     if not any(c["code"] == code for c in courses):
-        print("Course not found! Please register the course first.")
+        print("Error: Course not found! Please register the course first.")
         return
 
-    grade = input("Enter grade (A+, A, A-, B+, B, B-, C+, C, C-, D, F): ").upper()
-
-    if grade not in grade_points:
-        print("Invalid grade!")
-        return
+    while True:
+        grade = input("Enter grade (A+, A, A-, B+, B, B-, C+, C, C-, D, F): ").strip().upper()
+        if grade in grade_points:
+            break
+        print("Error: Invalid grade! Please enter a valid grade from the list.")
 
     gp = grade_points[grade]
     

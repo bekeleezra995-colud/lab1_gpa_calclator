@@ -1,7 +1,7 @@
 import os
 
 # Get the directory where this file (FileService.py) is located
-current_folder = os.path.dirname(file)
+current_folder = os.path.dirname(__file__)
 
 # The data folder is inside the current folder
 data_folder = os.path.join(current_folder, "data")

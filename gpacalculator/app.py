@@ -41,7 +41,7 @@ def main_menu():
         else:
             print("\n[!] Invalid choice! Please try again.")
 
-if name == "main":
+if __name__ == "__main__":
     try:
         main_menu()
     except KeyboardInterrupt:

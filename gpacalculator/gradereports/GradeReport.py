@@ -1,6 +1,6 @@
-from services.resultsService import results
-from services.courseService import courses
-from services.studentService import students
+from results.ResultService import results
+from courses.CoursesService import courses
+from students.StudentService import students
 
 def calculate_gpa(student_id):
     student_results = [r for r in results if r['student_id'] == student_id]
@@ -16,20 +16,28 @@ def calculate_gpa(student_id):
     total_gp = 0
 
     print(f"\n--- Transcript for {name} ({student_id}) ---")
-    print("Course\tCredit\tGrade\tGP")
+    print(f"{'Course':<10} {'Credit':<10} {'Grade':<10} {'GP':<10}")
+    print("-" * 40)
 
     for r in student_results:
-        course = next(c for c in courses if c["code"] == r["course_code"])
+        course = next((c for c in courses if c["code"] == r["course_code"]), None)
+        if not course:
+            continue # Should not happen if data integrity is maintained
+            
         credit = course["credit"]
         gp = r["gp"]
 
         total_credit += credit
         total_gp += (gp * credit)
 
-        print(f"{course['code']}\t{credit}\t{r['grade']}\t{gp}")
+        print(f"{r['course_code']:<10} {credit:<10} {r['grade']:<10} {gp:<10}")
 
-    gpa = total_gp / total_credit
-    print("-------------------------------------")
+    if total_credit == 0:
+        gpa = 0.0
+    else:
+        gpa = total_gp / total_credit
+        
+    print("-" * 40)
     print(f"Total Credit: {total_credit}")
     print(f"Total Grade Point: {round(total_gp, 2)}")
     print(f"Cumulative GPA: {round(gpa, 2)}")

@@ -1,9 +1,5 @@
 from students.StudentService import students
 from courses.CoursesService import courses
-from fileservice.FileService import save_data, load_data
-
-results = []  # {"student_id": "", "course_code": "", "grade": "", "gp": float}
-FILE_NAME = "results.txt"
 
 # DBU Grading System (Assumed based on provided code)
 grade_points = {
@@ -20,36 +16,22 @@ grade_points = {
     "F": 0.00
 }
 
-def load_results_from_file():
-    """Loads results from text file into the list."""
-    global results
-    results.clear()
-    lines = load_data(FILE_NAME)
-    for line in lines:
-        try:
-            # Format: student_id|course_code|grade|gp
-            parts = line.split("|")
-            if len(parts) == 4:
-                results.append({
-                    "student_id": parts[0], 
-                    "course_code": parts[1], 
-                    "grade": parts[2], 
-                    "gp": float(parts[3])
-                })
-        except Exception as e:
-            print(f"Skipping invalid line in {FILE_NAME}: {line}")
+def get_grade_point(grade):
+    """Returns the grade point for a given letter grade."""
+    return grade_points.get(grade, 0.0)
 
-def save_results_to_file():
-    """Saves the current list of results to text file."""
-    data_list = []
-    for r in results:
-        # Format: student_id|course_code|grade|gp
-        line = f"{r['student_id']}|{r['course_code']}|{r['grade']}|{r['gp']}"
-        data_list.append(line)
-    save_data(FILE_NAME, data_list)
-
-# Load data when module is imported
-load_results_from_file()
+# Initialize results with existing file data and test data
+results = [
+    # Existing file data
+    {"student_id": "S001", "course_code": "CS101", "grade": "A", "gp": 4.0},
+    {"student_id": "DBU1601567", "course_code": "CoSc1212", "grade": "A", "gp": 4.0},
+    # Massive test data
+    {'student_id':'DBU10001', 'course_code':'CoSc101', 'grade':'A', 'gp': 4.0},
+    {'student_id':'DBU10001', 'course_code':'CoSc104', 'grade':'B+', 'gp': 3.5},
+    {'student_id':'DBU10001', 'course_code':'CoSc105', 'grade':'C', 'gp': 2.0},
+    {'student_id':'DBU10001', 'course_code':'CoSc102', 'grade':'B', 'gp': 3.0},
+    {'student_id':'DBU10001', 'course_code':'CoSc103', 'grade':'A-', 'gp': 3.75}
+]
 
 def print_result_header():
     print(r"""
@@ -81,7 +63,7 @@ def add_result():
         print("[!] Error: Course code cannot be empty.")
     
     # Validate course
-    if not any(c["code"] == code for c in courses):
+    if not any(c["code"].lower() == code.lower() for c in courses):
         print("[!] Error: Course not found! Please register the course first.")
         return
 
@@ -95,15 +77,16 @@ def add_result():
     
     # Check if result already exists for this student and course
     for r in results:
-        if r['student_id'] == sid and r['course_code'] == code:
+        if r['student_id'] == sid and r['course_code'].lower() == code.lower():
             print("[!] Result for this course already exists. Updating...")
             r['grade'] = grade
             r['gp'] = gp
-            save_results_to_file() # Save update
+            r['gp'] = gp
+            # Saved to memory (list) automatically
             return
 
     results.append({"student_id": sid, "course_code": code, "grade": grade, "gp": gp})
-    save_results_to_file() # Save new result
+    # Saved to memory (list) automatically
     print("\n[+] Result added successfully!")
 
 def list_results():

@@ -19,9 +19,6 @@ The project is organized into the following modular structure:
 lab1_gpa_calclator/
     gpacalculator/
         app.py                  # Main entry point of the application
-        fileservice/            # Module for file operations
-            data/               # Directory where text files are saved
-            FileService.py      # Handles reading and writing to files
         courses/                # Module for course management
             CoursesService.py   # Logic for registering and listing courses
         students/               # Module for student management
@@ -41,30 +38,62 @@ lab1_gpa_calclator/
 3. Run the application using Python:
    python app.py
 
-## Usage Guide
+## Application Workflows
 
-### Main Menu
-Upon running the application, you will see the main menu with the following options:
-1. Student Menu
-2. Course Menu
-3. Result Menu
-4. GPA Report
-5. Exit
+This section outlines the step-by-step navigation for each feature in the application.
 
-### Student Menu
-- Register Student: Enter a unique Student ID and Name.
-- List Students: View all registered students.
+### 1. Student Management
+- Register a New Student
+  
+  Main Menu [1] -> Student Menu [1] Register Student -> Enter ID -> Enter Name
+  
+- View All Students
+  
+  Main Menu [1] -> Student Menu [2] List Students
+  
+- Return to Main Menu
+  
+  Main Menu [1] -> Student Menu [3] Back
+  
 
-### Course Menu
-- Register Course: Enter a unique Course Code, Title, and Credit hours.
-- List Courses: View all registered courses.
+### 2. Course Management
+- Register a New Course
+  
+  Main Menu [2] -> Course Menu [1] Register Course -> Enter Code -> Enter Title -> Enter Credit
+  
+- View All Courses
+  
+  Main Menu [2] -> Course Menu [2] List Courses
+  
+- Return to Main Menu
+  
+  Main Menu [2] -> Course Menu [3] Back
+  
 
-### Result Menu
-- Add Result: Enter Student ID, Course Code, and Grade (e.g., A, B+, C).
-- List Results: View all recorded results.
+### 3. Result Management
+- Record a Grade
+  
+  Main Menu [3] -> Result Menu [1] Add Result -> Enter Student ID -> Enter Course Code -> Enter Grade
+  
+- View All Results
+  
+  Main Menu [3] -> Result Menu [2] List Results
+  
+- Return to Main Menu
+  
+  Main Menu [3] -> Result Menu [3] Back
+  
 
-### GPA Report
-- Calculate GPA: Enter a Student ID to view their full transcript, including total credits, total grade points, and cumulative GPA.
+### 4. GPA Reporting
+- Generate Student Transcript
+  
+  Main Menu [4] -> GPA Report [1] Calculate GPA -> Enter Student ID
+  
+  *(Displays Course list, Grades, Credits, Total GP, and Cumulative GPA)*
+- Return to Main Menu
+  
+  Main Menu [4] -> GPA Report [2] Back
+  
 
 ## Grading System
 The application uses the following grading scale:

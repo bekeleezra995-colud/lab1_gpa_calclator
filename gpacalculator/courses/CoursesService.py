@@ -1,33 +1,13 @@
-from fileservice.FileService import save_data, load_data
-
-courses = []  # list of dicts: {"code": "CS101", "title": "Intro", "credit": 3}
-FILE_NAME = "courses.txt"
-
-def load_courses_from_file():
-    """Loads courses from text file into the list."""
-    global courses
-    courses.clear() # Clear existing data
-    lines = load_data(FILE_NAME)
-    for line in lines:
-        try:
-            # Format: code|title|credit
-            parts = line.split("|")
-            if len(parts) == 3:
-                courses.append({"code": parts[0], "title": parts[1], "credit": int(parts[2])})
-        except Exception as e:
-            print(f"Skipping invalid line in {FILE_NAME}: {line}")
-
-def save_courses_to_file():
-    """Saves the current list of courses to text file."""
-    data_list = []
-    for c in courses:
-        # Format: code|title|credit
-        line = f"{c['code']}|{c['title']}|{c['credit']}"
-        data_list.append(line)
-    save_data(FILE_NAME, data_list)
-
-# Load data when module is imported
-load_courses_from_file()
+courses = [
+    {'code': 'CS101', 'title': 'Intro to CS', 'credit': 3},
+    {'code': 'CoSc1212', 'title': 'Database', 'credit': 5},
+    # Massive test data hardcoded as requested
+    {'code':'cosc101', 'title':'Programming I', 'credit':3},
+    {'code':'cosc102', 'title':'Database System', 'credit':3},
+    {'code':'cosc103', 'title':'Networking', 'credit':3},
+    {'code':'cosc104', 'title':'Operating System', 'credit':3},
+    {'code':'cosc105', 'title':'AI', 'credit':3}
+]
 
 def print_course_header():
     print(r"""
@@ -47,8 +27,8 @@ def register_course():
             break
         print("[!] Error: Course code cannot be empty.")
 
-    # Check if course already exists
-    if any(c['code'] == code for c in courses):
+    # Check if course already exists (case-insensitive)
+    if any(c['code'].lower() == code.lower() for c in courses):
         print("[!] Error: Course with this code already exists!")
         return
 
@@ -68,7 +48,7 @@ def register_course():
             print("[!] Error: Invalid input! Please enter a number for credit.")
 
     courses.append({"code": code, "title": title, "credit": credit})
-    save_courses_to_file() # Save to file
+    # Saved to memory automatically
     print("\n[+] Course registered successfully!")
 
 def list_courses():

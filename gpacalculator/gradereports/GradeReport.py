@@ -12,6 +12,26 @@ def print_report_header():
     """)
     print("=" * 60)
 
+
+def calculate_total_credit(course_list):
+    """Calculates total credit from a list of course objects."""
+    return sum(c['credit'] for c in course_list)
+
+def calculate_total_grade_point(student_results, courses_list):
+    """Calculates total grade points based on results and course info."""
+    total_gp = 0
+    for r in student_results:
+        course = next((c for c in courses_list if c["code"].lower() == r["course_code"].lower()), None)
+        if course:
+            total_gp += r["gp"] * course["credit"]
+    return total_gp
+
+def calculate_gpa_value(total_gp, total_credit):
+    """Calculates GPA value."""
+    if total_credit == 0:
+        return 0.0
+    return total_gp / total_credit
+
 def calculate_gpa(student_id):
     student_results = [r for r in results if r['student_id'] == student_id]
     if not student_results:
@@ -22,8 +42,16 @@ def calculate_gpa(student_id):
     student = next((s for s in students if s["id"] == student_id), None)
     name = student["name"] if student else "Unknown"
 
-    total_credit = 0
-    total_gp = 0
+    # Gather course objects for the student's results
+    student_courses = []
+    for r in student_results:
+         course = next((c for c in courses if c["code"] == r["course_code"]), None)
+         if course:
+             student_courses.append(course)
+
+    total_credit = calculate_total_credit(student_courses)
+    total_gp = calculate_total_grade_point(student_results, courses)
+    gpa = calculate_gpa_value(total_gp, total_credit)
 
     print(f"\n--- Transcript for {name} ({student_id}) ---")
     print("=" * 60)
@@ -33,21 +61,13 @@ def calculate_gpa(student_id):
     for r in student_results:
         course = next((c for c in courses if c["code"] == r["course_code"]), None)
         if not course:
-            continue # Should not happen if data integrity is maintained
+            continue
             
         credit = course["credit"]
         gp = r["gp"]
 
-        total_credit += credit
-        total_gp += (gp * credit)
-
         print(f"{r['course_code']:<15} {credit:<15} {r['grade']:<15} {gp:<15}")
 
-    if total_credit == 0:
-        gpa = 0.0
-    else:
-        gpa = total_gp / total_credit
-        
     print("=" * 60)
     print(f"Total Credit:      {total_credit}")
     print(f"Total Grade Point: {round(total_gp, 2)}")

@@ -1,33 +1,8 @@
-from fileservice.FileService import save_data, load_data
-
-students = []   # list of dicts: {"id": "S001", "name": "Bekele"}
-FILE_NAME = "students.txt"
-
-def load_students_from_file():
-    """Loads students from text file into the list."""
-    global students
-    students.clear()
-    lines = load_data(FILE_NAME)
-    for line in lines:
-        try:
-            # Format: id|name
-            parts = line.split("|")
-            if len(parts) == 2:
-                students.append({"id": parts[0], "name": parts[1]})
-        except Exception as e:
-            print(f"Skipping invalid line in {FILE_NAME}: {line}")
-
-def save_students_to_file():
-    """Saves the current list of students to text file."""
-    data_list = []
-    for s in students:
-        # Format: id|name
-        line = f"{s['id']}|{s['name']}"
-        data_list.append(line)
-    save_data(FILE_NAME, data_list)
-
-# Load data when module is imported
-load_students_from_file()
+students = [
+    {"id": "S001", "name": "Bekele"},
+    {"id": "DBU1601567", "name": "BEKELE EZRA"},
+    {"id": "DBU10001", "name": "Test Student"}
+]
 
 def print_student_header():
     print(r"""
@@ -59,7 +34,7 @@ def register_student():
         print("[!] Error: Student name cannot be empty.")
 
     students.append({"id": sid, "name": name})
-    save_students_to_file() # Save to file
+    # Saved to memory (list) automatically
     print("\n[+] Student registered successfully!")
 
 def list_students():

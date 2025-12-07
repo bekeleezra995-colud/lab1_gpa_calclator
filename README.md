@@ -80,5 +80,6 @@ The application uses the following grading scale:
 - D  : 1.00
 - F  : 0.00
 
-## Author
-BEKELE SHIMELS
+## Author                 ID
+Bekele Shimels...........dbu1700411
+Birhanu Alagaw...........dbu1701340

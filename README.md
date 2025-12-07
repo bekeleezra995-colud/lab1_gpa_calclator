@@ -31,28 +31,9 @@ lab1_gpa_calclator/
         gradereports/           # Module for report generation
             GradeReport.py      # Logic for calculating and displaying GPA
             gpa-calculator/
-│
-├── app/                     # python package
-│   ├── init.py
-│   └── menu.py              # main menu code
-│
-├── students/                # python package
-│   ├── init.py
-│   └── StudentService.py
-│
-├── courses/                 # python package
-│   ├── init.py
-│   └── CoursesService.py
-│
-├── results/                 # python package
-│   ├── init.py
-│   └── ResultService.py
-│
-├── gradereports/            # python package
-│   ├── init.py
-│   └── GradeReport.py
-│
-└── main.py                  # program entry point
+            <img width="130" height="196" alt="image" src="https://github.com/user-attachments/assets/46da6519-c676-434c-b082-1fe5b878eec9" />
+
+
 
 ## Prerequisites
 - Python 3.x installed on your system.

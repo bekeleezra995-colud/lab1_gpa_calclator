@@ -4,7 +4,7 @@
 This is a Python-based console application designed to manage student grades. It allows users to register students and courses, record grades, and calculate the Cumulative Grade Point Average (GPA) for students. The system uses a file-based storage approach to persist data across sessions.
 
 ## Features
-- Register new students with ID and Name.
+- Register new students with ID and Name.     
 - Register new courses with Code, Title, and Credit hours.
 - Record student grades for specific courses.
 - Automatic Grade Point (GP) calculation based on the DBU grading system.
@@ -30,6 +30,29 @@ lab1_gpa_calclator/
             ResultService.py    # Logic for adding and listing results
         gradereports/           # Module for report generation
             GradeReport.py      # Logic for calculating and displaying GPA
+            gpa-calculator/
+│
+├── app/                     # python package
+│   ├── init.py
+│   └── menu.py              # main menu code
+│
+├── students/                # python package
+│   ├── init.py
+│   └── StudentService.py
+│
+├── courses/                 # python package
+│   ├── init.py
+│   └── CoursesService.py
+│
+├── results/                 # python package
+│   ├── init.py
+│   └── ResultService.py
+│
+├── gradereports/            # python package
+│   ├── init.py
+│   └── GradeReport.py
+│
+└── main.py                  # program entry point
 
 ## Prerequisites
 - Python 3.x installed on your system.

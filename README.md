@@ -30,7 +30,7 @@ lab1_gpa_calclator/
             ResultService.py    # Logic for adding and listing results
         gradereports/           # Module for report generation
             GradeReport.py      # Logic for calculating and displaying GPA
-            gpa-calculator/link
+            
             <img width="130" height="196" alt="image" src="https://github.com/user-attachments/assets/46da6519-c676-434c-b082-1fe5b878eec9" />
 
 

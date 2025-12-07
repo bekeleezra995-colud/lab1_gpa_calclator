@@ -12,7 +12,7 @@ def print_header():
   \____|_| /_/   \_\ \____\,_|_|\___|\__,_|_|\__,_|\__\___/|_|   
     """)
     print("=" * 60)
-    print("        WELCOME TO THE STUDENT GRADING SYSTEM")
+    print("        WELCOME TO THE  DBU STUDENT GRADING SYSTEM")
     print("=" * 60)
 
 def main_menu():

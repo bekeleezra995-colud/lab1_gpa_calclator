@@ -7,7 +7,7 @@ FILE_NAME = "results.txt"
 
 # DBU Grading System (Assumed based on provided code)
 grade_points = {
-    "A+": 4.0,
+   "A+": 4.0,
     "A": 4.0,
     "A-": 3.75,
     "B+": 3.50,

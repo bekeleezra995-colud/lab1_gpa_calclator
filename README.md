@@ -4,7 +4,7 @@
 This is a Python-based console application designed to manage student grades. It allows users to register students and courses, record grades, and calculate the Cumulative Grade Point Average (GPA) for students. The system uses a file-based storage approach to persist data across sessions.
 
 ## Features
-- Register new students with ID and Name.     
+- Register new students with ID and Name.##     
 - Register new courses with Code, Title, and Credit hours.
 - Record student grades for specific courses.
 - Automatic Grade Point (GP) calculation based on the DBU grading system.

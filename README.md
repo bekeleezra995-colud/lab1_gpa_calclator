@@ -34,56 +34,7 @@ lab1_gpa_calclator/
 
 
 COURSE MANAGEMENT SYSTEM — FLOWCHART(  sample )
-                   ┌────────────────────────┐
-                  │ Start Program          │
-                  └───────────┬────────────┘
-                              │
-                              ▼
-                ┌───────────────────────────┐
-                │ Load courses from file     │
-                │ (load_courses_from_file)   │
-                └───────────┬────────────────┘
-                            │
-                            ▼
-              ┌─────────────────────────────┐
-              │ Display Course Menu          │
-              ├─────────────────────────────┤
-              │ 1. Register Course           │
-              │ 2. List Courses              │
-              │ 3. Back / Exit               │
-              └───────────┬─────────────────┘
-                          │
-                          ▼
-              ┌─────────────────────┐
-              │ Read user choice    │
-              └───────────┬────────┘
-                          │
-     ┌────────────────────┼──────────────────────────┐
-     │                    │                          │
-     ▼                    ▼                          ▼
-┌─────────────┐   ┌────────────────┐         ┌────────────────────┐
-│ Choice = 1  │   │ Choice = 2     │         │ Choice = 3         │
-│ Register    │   │ List Courses   │         │ Exit Menu          │
-└──────┬──────┘   └───────┬────────┘         └────────┬───────────┘
-       │                  │                           │
-       ▼                  ▼                           ▼
-┌───────────────────┐   ┌───────────────────┐   ┌───────────────┐
-│ Input course code  │   │ Are there courses?│   │ End Program    │
-│ Input title        │   └────────┬──────────┘   └───────────────┘
-│ Input credit       │            │
-└───────────┬────────┘            ▼
-            │               ┌────────────────┐
-            ▼               │ Print courses   │
-  ┌───────────────────┐     └────────────────┘
-  │ Add to list        │
-  │ Save to file       │
-  │ (save_courses...)  │
-  └─────────┬──────────┘
-            │
-            ▼
-     ┌───────────────┐
-     │ Return to Menu │
-     └───────────────┘
+         <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/a8a70298-676f-480a-9945-3e315534b8e9" />
 
 
 

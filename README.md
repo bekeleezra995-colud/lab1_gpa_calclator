@@ -34,7 +34,9 @@ lab1_gpa_calclator/
 
 
 COURSE MANAGEMENT SYSTEM — FLOWCHART(  sample )
-                                   ┌────────────────────────┐
+    ## 📌 Course Management System Flowchart
+
+                  ┌────────────────────────┐
                   │ Start Program          │
                   └───────────┬────────────┘
                               │
@@ -84,6 +86,7 @@ COURSE MANAGEMENT SYSTEM — FLOWCHART(  sample )
      ┌───────────────┐
      │ Return to Menu │
      └───────────────┘
+
 
 
  

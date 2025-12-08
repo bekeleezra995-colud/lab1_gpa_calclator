@@ -32,6 +32,59 @@ lab1_gpa_calclator/
             GradeReport.py      # Logic for calculating and displaying GPA
             <img width="215" height="305" alt="image" src="https://github.com/user-attachments/assets/a5c54737-47fe-45dd-bc71-e4bff8776499" />
 
+
+COURSE MANAGEMENT SYSTEM — FLOWCHART(  sample )
+                  ┌────────────────────────┐
+                  │ Start Program          │
+                  └───────────┬────────────┘
+                              │
+                              ▼
+                ┌───────────────────────────┐
+                │ Load courses from file     │
+                │ (load_courses_from_file)   │
+                └───────────┬────────────────┘
+                            │
+                            ▼
+              ┌─────────────────────────────┐
+              │ Display Course Menu          │
+              ├─────────────────────────────┤
+              │ 1. Register Course           │
+              │ 2. List Courses              │
+              │ 3. Back / Exit               │
+              └───────────┬─────────────────┘
+                          │
+                          ▼
+              ┌─────────────────────┐
+              │ Read user choice    │
+              └───────────┬────────┘
+                          │
+     ┌────────────────────┼──────────────────────────┐
+     │                    │                          │
+     ▼                    ▼                          ▼
+┌─────────────┐   ┌────────────────┐         ┌────────────────────┐
+│ Choice = 1  │   │ Choice = 2     │         │ Choice = 3         │
+│ Register    │   │ List Courses   │         │ Exit Menu          │
+└──────┬──────┘   └───────┬────────┘         └────────┬───────────┘
+       │                  │                           │
+       ▼                  ▼                           ▼
+┌───────────────────┐   ┌───────────────────┐   ┌───────────────┐
+│ Input course code  │   │ Are there courses?│   │ End Program    │
+│ Input title        │   └────────┬──────────┘   └───────────────┘
+│ Input credit       │            │
+└───────────┬────────┘            ▼
+            │               ┌────────────────┐
+            ▼               │ Print courses   │
+  ┌───────────────────┐     └────────────────┘
+  │ Add to list        │
+  │ Save to file       │
+  │ (save_courses...)  │
+  └─────────┬──────────┘
+            │
+            ▼
+     ┌───────────────┐
+     │ Return to Menu │
+     └───────────────┘
+
  
     
 

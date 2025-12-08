@@ -19,6 +19,19 @@ grade_points = {
     "D": 1.00,
     "F": 0.00
 }
+grade_ranges = {
+    "A+": "90-100",
+    "A": "85-89",
+    "A-": "80-84",
+    "B+": "75-79",
+    "B": "70-74",
+    "B-": "65-69",
+    "C+": "60-64",
+    "C": "55-59",
+    "C-": "50-54",
+    "D": "40-49",
+    "F": "below 40"
+}
 
 def load_results_from_file():
     """Loads results from text file into the list."""

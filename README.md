@@ -17,6 +17,19 @@ This is a Python-based console application designed to manage student grades. It
 The project is organized into the following modular structure:
 
 lab1_gpa_calclator/
+    gpacalculator/
+        app.py                  # Main entry point of the application
+        fileservice/            # Module for file operations
+            data/               # Directory where text files are saved
+            FileService.py      # Handles reading and writing to files
+        courses/                # Module for course management
+            CoursesService.py   # Logic for registering and listing courses
+        students/               # Module for student management
+            StudentService.py   # Logic for registering and listing students
+        results/                # Module for result management
+            ResultService.py    # Logic for adding and listing results
+        gradereports/           # Module for report generation
+            GradeReport.py      # Logic for calculating and displaying GPA
  
         <img width="130" height="196" alt="image" src="https://github.com/user-attachments/assets/05857b95-f272-4073-9b52-1be53ce754a9" />
 

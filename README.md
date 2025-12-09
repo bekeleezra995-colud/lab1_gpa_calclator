@@ -1,7 +1,7 @@
 🎓 Student Grading System
 
 A Python Console Application for Managing Students, Courses, Grades & GPA
-<img width="72" height="49" alt="image" src="https://github.com/user-attachments/assets/537605bf-f3c9-479a-a8ca-aaca90c92a5b" />
+<img width="570" height="440" alt="image" src="https://github.com/user-attachments/assets/537605bf-f3c9-479a-a8ca-aaca90c92a5b" />
 
 📘 Overview
 

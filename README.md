@@ -1,8 +1,8 @@
 🎓 Student Grading System
 
 A Python Console Application for Managing Students, Courses, Grades & GPA
+<img width="720" height="497" alt="image" src="https://github.com/user-attachments/assets/537605bf-f3c9-479a-a8ca-aaca90c92a5b" />
 
-<p align="center"> <img src="A_logo_for_a_Student_Grading_System_is_displayed.png" alt="Student Grading System Logo" width="220"> </p>
 📘 Overview
 
 The Student Grading System is a Python-based console application designed to manage student academic data.

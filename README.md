@@ -1,134 +1,83 @@
-# Student Grading System
+🎓 Student Grading System
 
-## Description
-This is a Python-based console application designed to manage student grades. It allows users to register students and courses, record grades, and calculate the Cumulative Grade Point Average (GPA) for students. The system uses a file-based storage approach to persist data across sessions.
+A Python Console Application for Managing Students, Courses, Grades & GPA
+<img width="570" height="440" alt="image" src="https://github.com/user-attachments/assets/537605bf-f3c9-479a-a8ca-aaca90c92a5b" />
 
-## Features
-<<<<<<< HEAD
-- Register new students with ID and Name.
-=======
-- Register new students with ID and Name.##     
->>>>>>> 1657cd0185e0155732e162f174353bf83310be4d
-- Register new courses with Code, Title, and Credit hours.
-- Record student grades for specific courses.
-- Automatic Grade Point (GP) calculation based on the DBU grading system.
-- Generate GPA reports showing course details and cumulative GPA.
-- Data persistence using text files.
-- Input validation and exception handling for robust operation.
-- User-friendly command-line interface with ASCII art headers.
+📘 Overview
 
-## Project Structure
-The project is organized into the following modular structure:
+The Student Grading System is a Python-based console application designed to manage student academic data.
+It helps educators register students and courses, input grades, and compute Cumulative GPA (CGPA) using the DBU grading system.
+All data is stored in text files, making the system lightweight and easy to run on any computer.
 
-lab1_gpa_calclator/
-    gpacalculator/
-        app.py                  # Main entry point of the application
-        courses/                # Module for course management
-            CoursesService.py   # Logic for registering and listing courses
-        students/               # Module for student management
-            StudentService.py   # Logic for registering and listing students
-        results/                # Module for result management
-            ResultService.py    # Logic for adding and listing results
-        gradereports/           # Module for report generation
-            GradeReport.py      # Logic for calculating and displaying GPA
-<<<<<<< HEAD
-=======
-            <img width="215" height="305" alt="image" src="https://github.com/user-attachments/assets/a5c54737-47fe-45dd-bc71-e4bff8776499" />
+✨ Features
+
+👨‍🎓 Register Students (ID, Name)
+
+📚 Register Courses (Code, Title, Credit Hours)
+
+📝 Record Grades for students
+
+🔢 Automatic Grade Point (GP) calculation
+🛠️ Requirements
+
+Python 3.8+
+▶️ How to Run
+1. Open Terminal / CMD
+
+Windows PowerShell, macOS Terminal, or Linux shell.
 
 
-COURSE MANAGEMENT SYSTEM — FLOWCHART(  sample )
-         <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/a8a70298-676f-480a-9945-3e315534b8e9" />
-
-
-
-
- 
-    
-
-
-
->>>>>>> 1657cd0185e0155732e162f174353bf83310be4d
-
-## Prerequisites
-- Python 3.x installed on your system.
-
-## How to Run
-1. Open your terminal or command prompt.
-2. Navigate to the project directory:
+2. Navigate to the project directory
    cd d:/CS-Studies 2025-2026/Bekele/lab1_gpa_calclator/gpacalculator
-3. Run the application using Python:
+3. Run the application
    python app.py
+🧭 Application Guide
+1. Student Management
 
-## Application Workflows
+➡️ Register Student
+➡️ View All Students
+➡️ Go Back
 
-This section outlines the step-by-step navigation for each feature in the application.
+2. Course Management
 
-### 1. Student Management
-- Register a New Student
-  
-  Main Menu [1] -> Student Menu [1] Register Student -> Enter ID -> Enter Name
-  
-- View All Students
-  
-  Main Menu [1] -> Student Menu [2] List Students
-  
-- Return to Main Menu
-  
-  Main Menu [1] -> Student Menu [3] Back
-  
+➡️ Register Course
+➡️ View All Courses
+➡️ Go Back
 
-### 2. Course Management
-- Register a New Course
-  
-  Main Menu [2] -> Course Menu [1] Register Course -> Enter Code -> Enter Title -> Enter Credit
-  
-- View All Courses
-  
-  Main Menu [2] -> Course Menu [2] List Courses
-  
-- Return to Main Menu
-  
-  Main Menu [2] -> Course Menu [3] Back
-  
+3. Result Management
 
-### 3. Result Management
-- Record a Grade
-  
-  Main Menu [3] -> Result Menu [1] Add Result -> Enter Student ID -> Enter Course Code -> Enter Grade
-  
-- View All Results
-  
-  Main Menu [3] -> Result Menu [2] List Results
-  
-- Return to Main Menu
-  
-  Main Menu [3] -> Result Menu [3] Back
-  
+➡️ Add Student Grade
+➡️ View All Recorded Grades
+➡️ Go Back
 
-### 4. GPA Reporting
-- Generate Student Transcript
-  
-  Main Menu [4] -> GPA Report [1] Calculate GPA -> Enter Student ID
-  
-  *(Displays Course list, Grades, Credits, Total GP, and Cumulative GPA)*
-- Return to Main Menu
-  
-  Main Menu [4] -> GPA Report [2] Back
-  
+4. GPA Reporting
 
-## Grading System
-The application uses the following grading scale:
-- A+ : 4.0
-- A  : 4.0
-- A- : 3.75
-- B+ : 3.50
-- B  : 3.00
-- B- : 2.75
-- C+ : 2.50
-- C  : 2.00
-- C- : 1.75
-- D  : 1.00
-- F  : 0.00
+➡️ Generate Student GPA Report (Transcript)
+➡️ Return to Main Menu
 
-## Author
-BEKELE SHIMELS
+📊 GPA calculation + Transcript generation
+
+💾 File-based persistent storage
+
+🔐 Input validation & error handling
+
+🖥️ Console-based UI with ASCII headers
+🏆 DBU Grading System
+Grade	GP
+A+	4.00
+A	4.00
+A−	3.75
+B+	3.50
+B	3.00
+B−	2.75
+C+	2.50
+C	2.00
+C−	1.75
+D	1.00
+F	0.00
+🧑‍💻 Author
+
+Bekele Shimels.......dbu1700411
+birhanu alagaw .......dbu1701340
+Computer Science Student
+2025 – DBU

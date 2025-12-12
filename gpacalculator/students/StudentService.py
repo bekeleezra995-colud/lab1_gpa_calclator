@@ -1,67 +1,41 @@
-students = [
-    {"id": "S001", "name": "Bekele"},
-    {"id": "DBU1601567", "name": "BEKELE EZRA"},
-    {"id": "DBU10001", "name": "Test Student"}
-]
+from fileservices import FileService
+# from fileservices.exceptions import PersistenceError # Removed
 
-def print_student_header():
-    print(r"""
-   ____  _             _            _   
-  / ___|| |_ _   _  | | ___ _  | |_ 
-  \___ \| | | | |/ _` |/ _ \ '_ \| |
-   ___) | |_| |_| | (_| |  / | | | |_ 
-  |____/ \|\__,_|\__,_|\___|_| |_|\__|
-    """)
-    print("=" * 60)
+students = []
+try:
+    students = FileService.read_table('students.txt')
+except (OSError, ValueError):
+    # Fail silent on load
+    pass
 
-def register_student():
-    print("\n--- Register New Student ---")
-    while True:
-        sid = input("Enter student ID: ").strip()
-        if sid:
-            break
-        print("[!] Error: Student ID cannot be empty.")
+def get_all_students():
+    """Returns a list of all students."""
+    return students
 
-    # Check if ID already exists
-    if any(s['id'] == sid for s in students):
-        print("[!] Error: Student with this ID already exists!")
-        return
-
-    while True:
-        name = input("Enter student name: ").strip()
-        if name:
-            break
-        print("[!] Error: Student name cannot be empty.")
-
-    students.append({"id": sid, "name": name})
-    # Saved to memory (list) automatically
-    print("\n[+] Student registered successfully!")
-
-def list_students():
-    if not students:
-        print("\n[!] No students registered yet!")
-        return
-    print("\n" + "=" * 60)
-    print(f"{'ID':<15} {'Name':<30}")
-    print("=" * 60)
+def get_student_by_id(student_id):
+    """Returns a student dictionary if found, else None."""
     for s in students:
-        print(f"{s['id']:<15} {s['name']:<30}")
-    print("=" * 60)
+        if s['id'] == student_id:
+            return s
+    return None
 
-def student_menu():
-    while True:
-        print_student_header()
-        print("[1] Register Student")
-        print("[2] List Students")
-        print("[3] Back")
-        print("-" * 60)
-        choice = input("Enter choice: ")
+def create_student(student_id, name):
+    """
+    Registers a new student.
+    Raises ValueError if ID already exists or inputs are invalid.
+    Raises OSError if saving fails.
+    """
+    if not student_id:
+        raise ValueError("Student ID cannot be empty.")
+    if not name:
+        raise ValueError("Student name cannot be empty.")
+        
+    if any(s['id'] == student_id for s in students):
+        raise ValueError(f"Student with ID {student_id} already exists.")
 
-        if choice == "1":
-            register_student()
-        elif choice == "2":
-            list_students()
-        elif choice == "3":
-            break
-        else:
-            print("\n[!] Invalid choice!")
+    students.append({"id": student_id, "name": name})
+    try:
+        FileService.write_table('students.txt', students, ['id', 'name'])
+    except OSError:
+        students.pop() # Rollback
+        raise # Re-raise
